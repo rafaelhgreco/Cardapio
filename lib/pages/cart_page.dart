@@ -11,34 +11,37 @@ class CartPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Carrinho'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.delete_outline),
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (ctx) => AlertDialog(
-                  title: const Text('Limpar carrinho'),
-                  content: const Text('Deseja remover todos os itens do carrinho?'),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.of(ctx).pop(),
-                      child: const Text('NÃO'),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Provider.of<CartProvider>(context, listen: false).clearCart();
-                        Navigator.of(ctx).pop();
-                      },
-                      child: const Text('SIM'),
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
-        ],
+        centerTitle: true,
       ),
+      floatingActionButton: Container(
+        margin: const EdgeInsets.only(bottom: 16),
+        child: FloatingActionButton(
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (ctx) => AlertDialog(
+                title: const Text('Limpar carrinho'),
+                content: const Text('Deseja remover todos os itens do carrinho?'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.of(ctx).pop(),
+                    child: const Text('NÃO'),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Provider.of<CartProvider>(context, listen: false).clearCart();
+                      Navigator.of(ctx).pop();
+                    },
+                    child: const Text('SIM'),
+                  ),
+                ],
+              ),
+            );
+          },
+          child: const Icon(Icons.delete_outline),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: Consumer<CartProvider>(
         builder: (context, cart, child) {
           if (cart.items.isEmpty) {

@@ -5,6 +5,8 @@ import '../providers/cart_provider.dart';
 import '../widgets/product_card.dart';
 import 'cart_page.dart';
 
+
+
 class MenuPage extends StatelessWidget {
   MenuPage({super.key});
 
@@ -37,50 +39,53 @@ class MenuPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Cardápio'),
-        actions: [
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              IconButton(
-                icon: const Icon(Icons.shopping_cart),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const CartPage()),
-                  );
-                },
-              ),
-              Positioned(
-                right: 8,
-                top: 8,
-                child: Consumer<CartProvider>(
-                  builder: (context, cart, child) => cart.itemCount > 0
-                      ? Container(
-                    padding: const EdgeInsets.all(2),
-                    decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    constraints: const BoxConstraints(
-                      minWidth: 16,
-                      minHeight: 16,
-                    ),
-                    child: Text(
-                      '${cart.itemCount}',
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 10,
-                        color: Colors.white,
-                      ),
-                    ),
-                  )
-                      : Container(),
-                ),
-              ),
-            ],
-          ),
-        ],
+        centerTitle: true,
       ),
+      floatingActionButton: Container(
+        margin: const EdgeInsets.only(bottom: 16),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            FloatingActionButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CartPage()),
+                );
+              },
+              child: const Icon(Icons.shopping_cart),
+            ),
+            Positioned(
+              right: 0,
+              top: 0,
+              child: Consumer<CartProvider>(
+                builder: (context, cart, child) => cart.itemCount > 0
+                    ? Container(
+                  padding: const EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  constraints: const BoxConstraints(
+                    minWidth: 16,
+                    minHeight: 16,
+                  ),
+                  child: Text(
+                    '${cart.itemCount}',
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 10,
+                      color: Colors.white,
+                    ),
+                  ),
+                )
+                    : Container(),
+              ),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
         itemCount: products.length,
