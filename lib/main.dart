@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'providers/cart_provider.dart';
 import 'pages/home_page.dart';
 
 void main() {
@@ -10,27 +12,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Menu App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return ChangeNotifierProvider(
+      create: (_) => CartProvider(),
+      child: MaterialApp(
+        title: 'Menu App',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const HomePage(),
       ),
-      home: const HomePage(),
     );
   }
-}
-
-// models/product.dart
-class Product {
-  final String id;
-  final String name;
-  final double price;
-  final String description;
-
-  Product({
-    required this.id,
-    required this.name,
-    required this.price,
-    required this.description,
-  });
 }

@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../models/product.dart';
+import '../providers/cart_provider.dart';
 import '../widgets/product_card.dart';
 import 'cart_page.dart';
-class MenuPage extends StatefulWidget {
-  const MenuPage({super.key});
 
-  @override
-  State<MenuPage> createState() => _MenuPageState();
-}
+class MenuPage extends StatelessWidget {
+  MenuPage({super.key});
 
-class _MenuPageState extends State<MenuPage> {
   final List<Product> products = [
     Product(
       id: '1',
@@ -25,7 +23,13 @@ class _MenuPageState extends State<MenuPage> {
       description: 'Pizza com molho de tomate, mussarela e manjericão',
       imageUrl: 'assets/pizza.png',
     ),
-    // Adicione mais produtos conforme necessário
+    Product(
+      id: '3',
+      name: 'Batata Frita',
+      price: 15.90,
+      description: 'Porção de batatas fritas crocantes',
+      imageUrl: 'assets/fries.png',
+    ),
   ];
 
   @override
@@ -34,14 +38,46 @@ class _MenuPageState extends State<MenuPage> {
       appBar: AppBar(
         title: const Text('Cardápio'),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.shopping_cart),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const CartPage()),
-              );
-            },
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              IconButton(
+                icon: const Icon(Icons.shopping_cart),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CartPage()),
+                  );
+                },
+              ),
+              Positioned(
+                right: 8,
+                top: 8,
+                child: Consumer<CartProvider>(
+                  builder: (context, cart, child) => cart.itemCount > 0
+                      ? Container(
+                    padding: const EdgeInsets.all(2),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    constraints: const BoxConstraints(
+                      minWidth: 16,
+                      minHeight: 16,
+                    ),
+                    child: Text(
+                      '${cart.itemCount}',
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 10,
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
+                      : Container(),
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -52,11 +88,20 @@ class _MenuPageState extends State<MenuPage> {
           return ProductCard(
             product: products[index],
             onAddToCart: () {
-              // Adicionar ao carrinho (implementar posteriormente)
+              Provider.of<CartProvider>(context, listen: false)
+                  .addItem(products[index]);
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text('${products[index].name} adicionado ao carrinho!'),
                   duration: const Duration(seconds: 2),
+                  action: SnackBarAction(
+                    label: 'DESFAZER',
+                    onPressed: () {
+                      Provider.of<CartProvider>(context, listen: false)
+                          .removeItem(products[index].id);
+                    },
+                  ),
                 ),
               );
             },
