@@ -1,16 +1,32 @@
-# cardapio
+# Cardápio em Flutter
 
-A new Flutter project.
+Este é um projeto de aplicativo desenvolvido em Flutter que simula um cardápio digital.
 
-## Getting Started
+## Como Rodar o Projeto
 
-This project is a starting point for a Flutter application.
+Siga os passos abaixo para configurar e rodar o projeto localmente:
 
-A few resources to get you started if this is your first Flutter project:
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/rafaelhgreco/Cardapio
+   flutter pub get
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Funcionalidades
+O projeto inclui as seguintes funcionalidades:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Página Inicial: Interface de boas-vindas com acesso rápido ao cardápio.
+Ver Cardápio: Visualização detalhada dos produtos disponíveis.
+Gerenciar Carrinho:
+   Adicionar produtos ao carrinho.
+   Remover produtos do carrinho (com opção de desfazer).
+   Incrementar ou decrementar a quantidade de um produto no carrinho.
+   Limpar o carrinho inteiro.
+Preço Total do Carrinho: Exibe o valor total atualizado automaticamente.
+Finalizar Compra: Inclui as seguintes etapas:
+   Inserir dados de entrega.
+   Página de confirmação do pedido.
+   Conclusão do pedido com sucesso.
+
+## 👥 Autores
+- [Rafael Greco](https://github.com/rafaelhgreco)
+- [Renan Teixeira](https://github.com/RTeixe0)
