@@ -11,22 +11,26 @@ Siga os passos abaixo para configurar e rodar o projeto localmente:
    git clone https://github.com/rafaelhgreco/Cardapio
    flutter pub get
 
-## Funcionalidades
-O projeto inclui as seguintes funcionalidades:
+## Visão Geral
+   • Pacotes do PubDev utilizados:
+   cupertino_icons: ^1.0.8
+   provider: ^6.0.5
+   animations: ^2.0.11
 
+## Funcionalidades
 Página Inicial: Interface de boas-vindas com acesso rápido ao cardápio.
-Ver Cardápio: Visualização detalhada dos produtos disponíveis.
+Ver Cardápio: Exibe os produtos disponíveis de forma detalhada.
 Gerenciar Carrinho:
-   Adicionar produtos ao carrinho.
-   Remover produtos do carrinho (com opção de desfazer).
-   Incrementar ou decrementar a quantidade de um produto no carrinho.
-   Limpar o carrinho inteiro.
-Preço Total do Carrinho: Exibe o valor total atualizado automaticamente.
-Finalizar Compra: Inclui as seguintes etapas:
-   Inserir dados de entrega.
-   Página de confirmação do pedido.
-   Conclusão do pedido com sucesso.
+Adicionar produtos ao carrinho.
+Remover produtos (com opção de desfazer).
+Incrementar ou decrementar quantidades.
+Limpar todo o carrinho.
+Preço Total do Carrinho: Atualização automática do valor total.
+Finalizar Compra:
+Inserção de dados de entrega.
+Página de confirmação do pedido.
+Conclusão do pedido com sucesso.
 
 ## 👥 Autores
-- [Rafael Greco](https://github.com/rafaelhgreco)
-- [Renan Teixeira](https://github.com/RTeixe0)
+- Rafael Greco (https://github.com/rafaelhgreco)
+- Renan Teixeira (https://github.com/RTeixe0)
