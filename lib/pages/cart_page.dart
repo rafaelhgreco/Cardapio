@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/cart_provider.dart';
 import '../widgets/cart_item_card.dart';
+import 'package:cardapio/pages/pedido/delivery_info_dialog.dart';
+import '../models/product.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -95,14 +97,18 @@ class CartPage extends StatelessWidget {
                       onPressed: cart.items.isEmpty
                           ? null
                           : () {
-                        cart.clearCart();
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Pedido finalizado com sucesso!'),
-                            duration: Duration(seconds: 2),
+                        // Converter CartItem para Product
+                        List<Product> cartProducts = cart.items
+                            .map((cartItem) => cartItem.product)
+                            .toList();
+
+                        showDialog(
+                          context: context,
+                          builder: (context) => DeliveryInfoDialog(
+                            cartItems: cartProducts,
+                            totalPrice: cart.totalAmount,
                           ),
                         );
-                        Navigator.of(context).pop();
                       },
                       child: const Text('Finalizar Pedido'),
                     ),
