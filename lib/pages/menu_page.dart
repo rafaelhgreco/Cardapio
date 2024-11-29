@@ -15,14 +15,14 @@ class MenuPage extends StatelessWidget {
       name: 'X-Burger',
       price: 25.90,
       description: 'Hambúrguer artesanal com queijo, alface e tomate',
-      imageUrl: 'assets/images/fries.png',
+      imageUrl: 'assets/images/burger.png',
     ),
     Product(
       id: '2',
       name: 'Pizza Margherita',
       price: 45.90,
       description: 'Pizza com molho de tomate, mussarela e manjericão',
-      imageUrl: 'assets/images/fries.png',
+      imageUrl: 'assets/images/pizza.png',
     ),
     Product(
       id: '3',
