@@ -83,8 +83,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               // Adiciona espaço para a logo
               Container(
                 margin: const EdgeInsets.only(bottom: 16),
-                height: 200, // Altura da logo
-                width: 200, // Largura da logo
+                height: 100, // Altura da logo
+                width: 100, // Largura da logo
                 decoration: BoxDecoration(
                   image: const DecorationImage(
                     image: AssetImage('assets/images/logo.png'), // Caminho da logo
