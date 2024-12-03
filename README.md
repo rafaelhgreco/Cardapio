@@ -2,6 +2,11 @@
 
 Este é um projeto de aplicativo desenvolvido em Flutter que simula um cardápio digital.
 
+## 👥 Autores
+- Rafael Greco (https://github.com/rafaelhgreco)
+- Renan Teixeira (https://github.com/RTeixe0)
+- Rodrigo Almeida (https://github.com/RodsAlmeidaR)
+
 ## Como Rodar o Projeto
 
 Siga os passos abaixo para configurar e rodar o projeto localmente:
@@ -31,6 +36,3 @@ Inserção de dados de entrega.
 Página de confirmação do pedido.
 Conclusão do pedido com sucesso.
 
-## 👥 Autores
-- Rafael Greco (https://github.com/rafaelhgreco)
-- Renan Teixeira (https://github.com/RTeixe0)
